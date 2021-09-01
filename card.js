@@ -36,13 +36,16 @@
 
 function updateCaseNumber(isIncreasing) {
     const caseInput = document.getElementById('case-number');
-    const caseNumber = caseInput.value;
+    let caseNumber = caseInput.value;
     if (isIncreasing == true) {
-        caseInput.value = parseInt(caseNumber) + 1;
+        caseNumber = parseInt(caseNumber) + 1;
     }
-    else {
-        caseInput.value = parseInt(caseNumber) - 1;
+    else if (caseNumber > 0) {
+        caseNumber = parseInt(caseNumber) - 1;
     }
+    caseInput.value = caseNumber;
+    const casetotalPrice = document.getElementById('case-price-total');
+    casetotalPrice.innerText = caseNumber * 59;
 
 }
 
