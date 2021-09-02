@@ -47,7 +47,40 @@ function updateproduct(product, price, isIncreasing) {
     const productTotalPrice = document.getElementById(product + '-total');
     productTotalPrice.innerText = productnumber * price;
 
+    calculateTotal();
+
 }
+
+function getInputValue(product) {
+    const phoneInput = document.getElementById(product + '-number');
+    const productnumber = parseInt(phoneInput.value);
+    return productnumber;
+}
+
+function calculateTotal() {
+    // const phoneInput = document.getElementById('phone-number');
+    // const productnumber = parseInt(phoneInput.value);
+    const phoneTotal = getInputValue('phone') * 1219;
+    const caseTotal = getInputValue('case') * 59;
+    const subtotal = phoneTotal + caseTotal;
+    const tax = subtotal / 10;
+    const totalPrice = subtotal + tax;
+
+    // update on the  html element
+    document.getElementById('sub-total').innerText = subtotal;
+    document.getElementById('tax-amount').innerText = tax;
+    document.getElementById('total').innerText = totalPrice;
+
+
+
+
+
+}
+
+
+
+
+
 ////phone update
 document.getElementById('phone-plus').addEventListener('click', function () {
     updateproduct('phone', 1219, true);
@@ -57,10 +90,6 @@ document.getElementById('phone-plus').addEventListener('click', function () {
 document.getElementById('phone-minus').addEventListener('click', function () {
     updateproduct('phone', 1219, false);
 })
-
-
-
-
 
 //case update  event
 
